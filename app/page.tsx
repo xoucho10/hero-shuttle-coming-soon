@@ -1,9 +1,9 @@
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white flex flex-col items-center justify-center text-center p-6 overflow-hidden">
+    <main className="min-h-screen bg-white flex flex-col items-center justify-center text-center px-4 py-10 overflow-hidden">
 
-      {/* Logo bounce continually */}
-      <div className="w-[240px] h-[240px] md:w-[320px] md:h-[320px] rounded-full overflow-hidden shadow-xl animate-bounce-slow">
+      {/* Logo - responsive */}
+      <div className="w-[180px] h-[180px] sm:w-[240px] sm:h-[240px] md:w-[320px] md:h-[320px] rounded-full overflow-hidden shadow-xl animate-bounce-slow">
         <img
           src="/logo.png"
           alt="HERO SHUTTLE & TOURS ZANZIBAR"
@@ -11,16 +11,16 @@ export default function Home() {
         />
       </div>
 
-      {/* Big text - stops 4s in center then moves */}
-      <div className="mt-10 w-full overflow-hidden">
-        <h1 className="text-5xl md:text-7xl font-black tracking-tight text-[#0A2342] animate-slide-lr whitespace-nowrap">
+      {/* Big text - responsive size, no overflow */}
+      <div className="mt-8 md:mt-10 w-full overflow-hidden">
+        <h1 className="text-[11vw] sm:text-5xl md:text-7xl font-black tracking-tight text-[#0A2342] animate-slide-lr whitespace-nowrap leading-none">
           COMING SOON
         </h1>
       </div>
 
-      {/* Small text - stops 4s in center then moves */}
-      <div className="w-full overflow-hidden mt-3">
-        <p className="text-[#FF8A00] font-bold tracking-[0.3em] text-sm animate-slide-rl whitespace-nowrap">
+      {/* Small text - responsive tracking */}
+      <div className="w-full overflow-hidden mt-3 px-2">
+        <p className="text-[#FF8A00] font-bold tracking-[0.15em] sm:tracking-[0.3em] text-[11px] sm:text-sm animate-slide-rl whitespace-nowrap">
           HERO SHUTTLE & TOURS ZANZIBAR
         </p>
       </div>
@@ -28,31 +28,36 @@ export default function Home() {
       <style>{`
         @keyframes bounce-slow {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-25px); }
+          50% { transform: translateY(-20px); }
         }
-        /* Total 8s cycle = 1s move in + 4s STOP + 1s move out + 2s reset pause */
         @keyframes slide-lr {
-          0% { transform: translateX(-100%); }
-          20% { transform: translateX(0%); }
-          70% { transform: translateX(0%); } /* STOPS FOR 4 SECONDS HERE */
-          85% { transform: translateX(100%); }
-          100% { transform: translateX(100%); }
+          0% { transform: translateX(-110%); }
+          15% { transform: translateX(0%); }
+          75% { transform: translateX(0%); }
+          90% { transform: translateX(110%); }
+          100% { transform: translateX(110%); }
         }
         @keyframes slide-rl {
-          0% { transform: translateX(100%); }
-          20% { transform: translateX(0%); }
-          70% { transform: translateX(0%); } /* STOPS FOR 4 SECONDS HERE */
-          85% { transform: translateX(-100%); }
-          100% { transform: translateX(-100%); }
+          0% { transform: translateX(110%); }
+          15% { transform: translateX(0%); }
+          75% { transform: translateX(0%); }
+          90% { transform: translateX(-110%); }
+          100% { transform: translateX(-110%); }
         }
-      .animate-bounce-slow {
+       .animate-bounce-slow {
           animation: bounce-slow 2s ease-in-out infinite;
         }
-      .animate-slide-lr {
+       .animate-slide-lr {
           animation: slide-lr 8s ease-in-out infinite;
         }
-      .animate-slide-rl {
+       .animate-slide-rl {
           animation: slide-rl 8s ease-in-out infinite;
+        }
+        /* Reduce motion on very small screens */
+        @media (max-width: 380px) {
+         .animate-slide-lr,.animate-slide-rl {
+            animation-duration: 6s;
+          }
         }
       `}</style>
     </main>
